@@ -80,9 +80,10 @@ public class QuizActivity extends AppCompatActivity {
     private void showGradeIfAnsweredAll() {
         int countAnswered=0;
         double grade=0;
-        for(int i=0; i<mQuestionBank.length; i++)
+        //noinspection ForLoopReplaceableByForEach
+        for(Question question : mQuestionBank)
         {
-            countAnswered = mQuestionBank[i].isAnswered() ? countAnswered + 1 : countAnswered;
+            countAnswered = question.isAnswered() ? countAnswered + 1 : countAnswered;
         }
         if(countAnswered == mQuestionBank.length)
         {
@@ -93,9 +94,9 @@ public class QuizActivity extends AppCompatActivity {
 
     private double calculateGrade() {
         int countAnsweredCorrectly=0;
-        for(int i=0; i<mQuestionBank.length; i++)
+        for(Question question : mQuestionBank)
         {
-            countAnsweredCorrectly = mQuestionBank[i].isAnsweredCorrect() ? countAnsweredCorrectly + 1 : countAnsweredCorrectly;
+            countAnsweredCorrectly = question.isAnsweredCorrect() ? countAnsweredCorrectly + 1 : countAnsweredCorrectly;
         }
         return (1.0*countAnsweredCorrectly/mQuestionBank.length)*100.0;
     }
