@@ -43,7 +43,6 @@ public class CrimeListFragment extends Fragment {
         private Crime mCrime;
         private TextView mTitleTextView;
         private TextView mDateTextView;
-        private Button mContactPoliceButton;
 
         public CrimeHolder(View view) {
             super(view);
@@ -51,7 +50,6 @@ public class CrimeListFragment extends Fragment {
 
             mTitleTextView = itemView.findViewById(R.id.crime_title);
             mDateTextView = itemView.findViewById(R.id.crime_date);
-            mContactPoliceButton = itemView.findViewById(R.id.contact_police);
         }
 
         public void bind(Crime crime) {
