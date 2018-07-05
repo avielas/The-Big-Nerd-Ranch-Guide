@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,7 @@ public class CrimeListFragment extends Fragment {
         private Crime mCrime;
         private TextView mTitleTextView;
         private TextView mDateTextView;
+        private ImageView mSolvedImageVIew;
 
         public CrimeHolder(View view) {
             super(view);
@@ -50,19 +52,21 @@ public class CrimeListFragment extends Fragment {
 
             mTitleTextView = itemView.findViewById(R.id.crime_title);
             mDateTextView = itemView.findViewById(R.id.crime_date);
+            mSolvedImageVIew = itemView.findViewById(R.id.crime_solved);
         }
 
         public void bind(Crime crime) {
             mCrime = crime;
             mTitleTextView.setText(mCrime.getTitle());
-            mDateTextView.setText(mCrime.getDate().toString());
-            if(this.getItemViewType() == 1){
-                Button b = itemView.findViewById(R.id.contact_police);
-                b.setOnClickListener(e -> {
-                    Toast.makeText(getActivity(), R.string.call_police,
-                            Toast.LENGTH_SHORT).show();
-                });
-            }
+            mDateTextView.setText(mCrime.getDateFormat().toString());
+            mSolvedImageVIew.setVisibility(crime.isSolved() ? View.VISIBLE : View.GONE);
+//            if(this.getItemViewType() == 1){
+//                Button b = itemView.findViewById(R.id.contact_police);
+//                b.setOnClickListener(e -> {
+//                    Toast.makeText(getActivity(), R.string.call_police,
+//                            Toast.LENGTH_SHORT).show();
+//                });
+//            }
         }
 
         @Override
@@ -85,14 +89,14 @@ public class CrimeListFragment extends Fragment {
             View view;
             int layout;
 
-            if(viewType == 0){
-                layout = R.layout.list_item_crime;
-            }
-            else {
-                layout = R.layout.list_item_crime_police;
-            }
+//            if(viewType == 0){
+//                layout = R.layout.list_item_crime;
+//            }
+//            else {
+//                layout = R.layout.list_item_crime_police;
+//            }
 
-//            layout = R.layout.list_item_crime;
+            layout = R.layout.list_item_crime;
 
             view = layoutInflater.inflate(layout, parent, false);
 
