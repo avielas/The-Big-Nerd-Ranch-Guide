@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class CrimeListFragment extends Fragment {
@@ -58,7 +60,10 @@ public class CrimeListFragment extends Fragment {
         public void bind(Crime crime) {
             mCrime = crime;
             mTitleTextView.setText(mCrime.getTitle());
-            mDateTextView.setText(mCrime.getDateFormat().toString());
+            SimpleDateFormat formatter = new SimpleDateFormat("EEEE, MMM dd, yyyy");
+            Date date = mCrime.getDate();
+            String dateStr = formatter.format(date);
+            mDateTextView.setText(dateStr);
             mSolvedImageVIew.setVisibility(crime.isSolved() ? View.VISIBLE : View.GONE);
 //            if(this.getItemViewType() == 1){
 //                Button b = itemView.findViewById(R.id.contact_police);
