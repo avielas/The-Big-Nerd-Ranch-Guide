@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Notice that the container view is-->
+<!-- completely generic; it does not name the CrimeFragment class. You can and will use this same layout-->
+<!-- to host other fragments. -->
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
